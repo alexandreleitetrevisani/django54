@@ -1,0 +1,47 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "fusion1",
+      "image": "alextrevis/fusion:v1",
+      "hostname": "fusion1",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "fusion2",
+      "image": "alextrevis/fusion:v1",
+      "hostname": "fusion2",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "fusion3",
+      "image": "alextrevis/fusion:v1",
+      "hostname": "fusion3",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "pgfusion",
+      "image": "alextrevis/pgfusion:v1",
+      "hostname": "pgfusion",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "alextrevis/nginx_fusion:v1",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["fusion1", "fusion2", "fusion3"],
+      "memory": 128
+    }
+  ]
+}
